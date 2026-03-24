@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Info, Github } from "lucide-react";
+import { Info } from "lucide-react";
+import { SiGithub } from "@icons-pack/react-simple-icons";
+
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Dialog,
@@ -59,7 +61,7 @@ export function AboutDialog() {
               rel="noopener noreferrer"
               className={buttonVariants({ variant: "outline" })}
             >
-              <Github />
+              <SiGithub />
               GitHub
             </a>
           </div>

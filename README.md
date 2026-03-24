@@ -1,3 +1,4 @@
+![Light Up Creator](./public/og.png)
 # Light Up Creator
 
 Light Up (美術館 / Akari) パズルの作成・プレイ・共有ができるブラウザツールです。

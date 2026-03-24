@@ -4,17 +4,18 @@ type Props = {
   x: number;
   y: number;
   size: number;
+  opacity?: number;
 };
 
 /** 電球アイコン（Konva Group） */
-export function BulbIcon({ x, y, size }: Props) {
+export function BulbIcon({ x, y, size, opacity = 1 }: Props) {
   const r = size * 0.25;
   const rayLen = size * 0.12;
   const rayOffset = r + rayLen * 0.4;
   const rays = 8;
 
   return (
-    <Group x={x} y={y}>
+    <Group x={x} y={y} listening={false} opacity={opacity}>
       <Circle radius={r} fill="#fbbf24" stroke="#f59e0b" strokeWidth={1.5} />
       {Array.from({ length: rays }, (_, i) => {
         const angle = (i * Math.PI * 2) / rays;

@@ -1,49 +1,67 @@
-import { useState, useCallback, useRef, useEffect } from "react";
-import type { PuzzleDef, SolveResult } from "../lib/akari/types";
+import { useReducer, useRef, useEffect } from "react";
+import type { PuzzleDef, SolveResult } from "../lib/lightup/types";
 
-export function useSolver() {
-  const [result, setResult] = useState<SolveResult | null>(null);
-  const [solving, setSolving] = useState(false);
-  const workerRef = useRef<Worker | null>(null);
+const DEBOUNCE_MS = 200;
+
+interface SolverState {
+  result: SolveResult | null;
+  solving: boolean;
+}
+
+type SolverAction =
+  | { type: "start" }
+  | { type: "done"; result: SolveResult }
+  | { type: "error" };
+
+function solverReducer(_state: SolverState, action: SolverAction): SolverState {
+  switch (action.type) {
+    case "start":
+      return { result: null, solving: true };
+    case "done":
+      return { result: action.result, solving: false };
+    case "error":
+      return { result: null, solving: false };
+    default:
+      return _state;
+  }
+}
+
+function createWorker() {
+  return new Worker(new URL("../workers/solver.worker.ts", import.meta.url), {
+    type: "module",
+  });
+}
+
+export function useSolver(grid: PuzzleDef) {
+  const [state, dispatch] = useReducer(solverReducer, {
+    result: null,
+    solving: false,
+  });
+  const workerRef = useRef<Worker>(undefined);
+  const timerRef = useRef<number>(undefined);
 
   useEffect(() => {
+    dispatch({ type: "start" });
+
+    timerRef.current = setTimeout(() => {
+      const worker = createWorker();
+      workerRef.current = worker;
+      worker.addEventListener("message", (e: MessageEvent<SolveResult>) => {
+        dispatch({ type: "done", result: e.data });
+      });
+
+      worker.addEventListener("error", () => {
+        dispatch({ type: "error" });
+      });
+
+      worker.postMessage(grid);
+    }, DEBOUNCE_MS);
+
     return () => {
+      clearTimeout(timerRef.current);
       workerRef.current?.terminate();
     };
-  }, []);
+  }, [grid]);
 
-  const runSolver = useCallback((grid: PuzzleDef) => {
-    workerRef.current?.terminate();
-    setSolving(true);
-    setResult(null);
-
-    const worker = new Worker(new URL("../workers/solver.worker.ts", import.meta.url), {
-      type: "module",
-    });
-    workerRef.current = worker;
-
-    worker.onmessage = (e: MessageEvent<SolveResult | { kind: "unique"; solution: string[] }>) => {
-      const data = e.data;
-      if (data.kind === "unique" && Array.isArray(data.solution)) {
-        setResult({ kind: "unique", solution: new Set(data.solution) });
-      } else {
-        setResult(data as SolveResult);
-      }
-      setSolving(false);
-    };
-
-    worker.onerror = () => {
-      setSolving(false);
-    };
-
-    worker.postMessage(grid);
-  }, []);
-
-  const clear = useCallback(() => {
-    setResult(null);
-    workerRef.current?.terminate();
-    setSolving(false);
-  }, []);
-
-  return { result, solving, runSolver, clear };
+  return state;
 }

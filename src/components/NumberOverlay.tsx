@@ -22,6 +22,7 @@ export function NumberOverlay({ x, y, size, number }: Props) {
       fill="#ffffff"
       align="center"
       verticalAlign="middle"
+      listening={false}
     />
   );
 }

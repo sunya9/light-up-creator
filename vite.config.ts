@@ -5,7 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/art-museum-creator/",
+  base: "/light-up-creator/",
   plugins: [react(), tailwindcss()],
   resolve: {
     tsconfigPaths: true,

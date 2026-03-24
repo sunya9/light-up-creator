@@ -9,7 +9,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-const GITHUB_URL = "https://github.com/sunya9/art-museum-creator";
+const GITHUB_URL = "https://github.com/sunya9/light-up-creator";
 
 export function AboutDialog() {
   const [open, setOpen] = useState(false);

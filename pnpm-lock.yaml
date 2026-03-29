@@ -91,8 +91,8 @@ importers:
         specifier: ^17.4.0
         version: 17.4.0
       happy-dom:
-        specifier: ^20.8.8
-        version: 20.8.8
+        specifier: ^20.8.9
+        version: 20.8.9
       knip:
         specifier: ^6.0.4
         version: 6.0.4
@@ -110,12 +110,12 @@ importers:
         version: 8.0.2(@types/node@25.5.0)(jiti@2.6.1)(yaml@2.8.3)
       vitest:
         specifier: ^4.1.1
-        version: 4.1.1(@types/node@25.5.0)(happy-dom@20.8.8)(jsdom@29.0.1(@noble/hashes@1.8.0))(msw@2.12.13(@types/node@25.5.0)(typescript@5.9.3))(vite@8.0.2(@types/node@25.5.0)(jiti@2.6.1)(yaml@2.8.3))
+        version: 4.1.1(@types/node@25.5.0)(happy-dom@20.8.9)(jsdom@29.0.1(@noble/hashes@1.8.0))(msw@2.12.13(@types/node@25.5.0)(typescript@5.9.3))(vite@8.0.2(@types/node@25.5.0)(jiti@2.6.1)(yaml@2.8.3))
 
 packages:
 
-  '@asamuzakjp/css-color@5.0.1':
-    resolution: {integrity: sha512-2SZFvqMyvboVV1d15lMf7XiI3m7SDqXUuKaTymJYLN6dSGadqp+fVojqJlVoMlbZnlTmu3S0TLwLTJpvBMO1Aw==}
+  '@asamuzakjp/css-color@5.1.1':
+    resolution: {integrity: sha512-iGWN8E45Ws0XWx3D44Q1t6vX2LqhCKcwfmwBYCDsFrYFS6m4q/Ks61L2veETaLv+ckDC6+dTETJoaAAb7VjLiw==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
 
   '@asamuzakjp/dom-selector@7.0.4':
@@ -1876,8 +1876,8 @@ packages:
     resolution: {integrity: sha512-gGgrVCoDKlIZ8fIqXBBb0pPKqDgki0Z/FSKNiQzSGj2uEYHr1tq5wmBegGwJx6QB5S5cM0khSBpi/JFHMCvsmQ==}
     engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
 
-  happy-dom@20.8.8:
-    resolution: {integrity: sha512-5/F8wxkNxYtsN0bXfMwIyNLZ9WYsoOYPbmoluqVJqv8KBUbcyKZawJ7uYK4WTX8IHBLYv+VXIwfeNDPy1oKMwQ==}
+  happy-dom@20.8.9:
+    resolution: {integrity: sha512-Tz23LR9T9jOGVZm2x1EPdXqwA37G/owYMxRwU0E4miurAtFsPMQ1d2Jc2okUaSjZqAFz2oEn3FLXC5a0a+siyA==}
     engines: {node: '>=20.0.0'}
 
   has-symbols@1.1.0:
@@ -3097,7 +3097,7 @@ packages:
 
 snapshots:
 
-  '@asamuzakjp/css-color@5.0.1':
+  '@asamuzakjp/css-color@5.1.1':
     dependencies:
       '@csstools/css-calc': 3.1.1(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)
       '@csstools/css-color-parser': 4.0.2(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)
@@ -4708,7 +4708,7 @@ snapshots:
 
   graphql@16.13.1: {}
 
-  happy-dom@20.8.8:
+  happy-dom@20.8.9:
     dependencies:
       '@types/node': 25.5.0
       '@types/whatwg-mimetype': 3.0.2
@@ -4853,7 +4853,7 @@ snapshots:
 
   jsdom@29.0.1(@noble/hashes@1.8.0):
     dependencies:
-      '@asamuzakjp/css-color': 5.0.1
+      '@asamuzakjp/css-color': 5.1.1
       '@asamuzakjp/dom-selector': 7.0.4
       '@bramus/specificity': 2.4.2
       '@csstools/css-syntax-patches-for-csstree': 1.1.2(css-tree@3.2.1)
@@ -5746,7 +5746,7 @@ snapshots:
       jiti: 2.6.1
       yaml: 2.8.3
 
-  vitest@4.1.1(@types/node@25.5.0)(happy-dom@20.8.8)(jsdom@29.0.1(@noble/hashes@1.8.0))(msw@2.12.13(@types/node@25.5.0)(typescript@5.9.3))(vite@8.0.2(@types/node@25.5.0)(jiti@2.6.1)(yaml@2.8.3)):
+  vitest@4.1.1(@types/node@25.5.0)(happy-dom@20.8.9)(jsdom@29.0.1(@noble/hashes@1.8.0))(msw@2.12.13(@types/node@25.5.0)(typescript@5.9.3))(vite@8.0.2(@types/node@25.5.0)(jiti@2.6.1)(yaml@2.8.3)):
     dependencies:
       '@vitest/expect': 4.1.1
       '@vitest/mocker': 4.1.1(msw@2.12.13(@types/node@25.5.0)(typescript@5.9.3))(vite@8.0.2(@types/node@25.5.0)(jiti@2.6.1)(yaml@2.8.3))
@@ -5770,7 +5770,7 @@ snapshots:
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 25.5.0
-      happy-dom: 20.8.8
+      happy-dom: 20.8.9
       jsdom: 29.0.1(@noble/hashes@1.8.0)
     transitivePeerDependencies:
       - msw

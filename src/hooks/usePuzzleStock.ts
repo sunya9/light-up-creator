@@ -45,7 +45,7 @@ export function usePuzzleStock() {
             ? {
                 ...p,
                 data: serialized,
-                ...(name != null ? { name } : {}),
+                ...(name ? { name } : {}),
               }
             : p,
         ),

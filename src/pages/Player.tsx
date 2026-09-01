@@ -110,6 +110,10 @@ function PlayerInternal({ hash, grid }: { hash: string; grid: PuzzleDef }) {
           break;
         case "none":
           break;
+        default:
+          throw new Error(
+            `Unknown action: ${JSON.stringify(result satisfies never)}`,
+          );
       }
     },
     [grid, bulbs, crosses, illuminated, rejectCell],

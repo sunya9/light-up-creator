@@ -82,12 +82,15 @@ function puzzlesReducer(
           : { ...state.histories, [action.id]: action.fallbackHistory },
       };
     case "remove": {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { [action.id]: _, ...rest } = state.histories;
       return { ...state, histories: rest };
     }
     case "clear_id":
       return { ...state, currentId: undefined };
+    default:
+      throw new Error(
+        `Unknown action: ${JSON.stringify(action satisfies never)}`,
+      );
   }
 }
 
